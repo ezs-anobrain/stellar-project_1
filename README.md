@@ -18,7 +18,7 @@ In the Philippines, Water Refilling Stations (WRS) are a neighborhood staple, bu
 - **Self-Custody**: Users maintain full control of their funds and loyalty progress via their own Stellar keys.
 
 ## Track
-StellarX Philippines — Main Workshop Track
+Track 2 Financial Inclusion & Everyday Payments
 
 ## Tech Stack
 - **Framework**: Next.js 15 (App Router)
