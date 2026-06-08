@@ -30,19 +30,23 @@ export default function AddTrustline({
   };
 
   if (status === 'done') {
-    return <p className="text-sm text-emerald-600">USDC trustline added.</p>;
+    return (
+      <div className="flex items-center justify-center gap-2 rounded-xl bg-[#78866b]/10 px-4 py-3 border border-[#78866b]/20">
+        <span className="text-xs font-bold text-[#5d6852]">USDC Trustline Active</span>
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className="w-full">
       <button
         onClick={add}
         disabled={status === 'working'}
-        className="rounded border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50 disabled:opacity-50"
+        className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-xs font-bold text-stone-600 transition-all hover:bg-stone-50 disabled:opacity-50 active:scale-95 shadow-sm"
       >
-        {status === 'working' ? 'Adding USDC trustline…' : 'Add USDC trustline'}
+        {status === 'working' ? 'Adding Assets…' : 'Add USDC Asset'}
       </button>
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
     </div>
   );
 }

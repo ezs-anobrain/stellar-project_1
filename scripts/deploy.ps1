@@ -32,13 +32,8 @@ Write-Host "Deploying to $Network..."
 $ContractId = (stellar contract deploy --wasm $Wasm --source-account $Identity --network $Network).Trim()
 Write-Host "Deployed contract ID: $ContractId"
 
-# 4. Initialise the savings goal (target = 1000). Ignore error if already initialised.
-Write-Host "Initialising savings goal (target 1000)..."
-try {
-  stellar contract invoke --id $ContractId --source-account $Identity --network $Network -- init --target 1000
-} catch {
-  Write-Host "(init skipped — contract may already be initialised)"
-}
+# 4. Skip initialisation (WaterLoyalty doesn't need it)
+Write-Host "Contract deployed successfully."
 
 # 5. Write NEXT_PUBLIC_CONTRACT_ID into web\.env.local
 if (Test-Path $EnvFile) {

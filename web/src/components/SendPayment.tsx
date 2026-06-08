@@ -120,22 +120,22 @@ export default function SendPayment({
         <button
           onClick={handleSend}
           disabled={busy || !destination || !amount}
-          className="w-full rounded bg-emerald-600 py-3 font-medium text-white transition-colors hover:bg-emerald-700 disabled:opacity-50"
+          className="w-full rounded-lg bg-[#78866b] py-3 font-bold text-white shadow-lg shadow-[#78866b]/20 transition-all hover:bg-[#6a765e] disabled:opacity-50 active:scale-95"
         >
           {STATUS_LABEL[status]}
         </button>
       </div>
 
       {status === 'success' && (
-        <div className="mt-4 rounded border border-emerald-200 bg-emerald-50 p-3">
-          <p className="font-medium text-emerald-700">Payment confirmed!</p>
+        <div className="mt-4 rounded-lg border border-[#78866b]/20 bg-[#78866b]/5 p-4 text-center animate-in zoom-in-95 duration-300">
+          <p className="font-bold text-[#5d6852] mb-2">Payment Sent Successfully</p>
           <a
             href={`https://stellar.expert/explorer/testnet/tx/${txHash}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="break-all text-sm text-indigo-600 hover:underline"
+            className="text-[10px] font-bold uppercase tracking-widest text-[#78866b] hover:underline"
           >
-            View on Stellar Expert →
+            Explore Transaction
           </a>
         </div>
       )}

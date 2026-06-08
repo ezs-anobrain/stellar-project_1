@@ -1,59 +1,54 @@
 #![cfg(test)]
 use super::*;
-use soroban_sdk::Env;
+use soroban_sdk::{testutils::Address as _, Address, Env};
 
-fn setup(env: &Env) -> SavingsGoalContractClient {
-    let contract_id = env.register(SavingsGoalContract, ());
-    SavingsGoalContractClient::new(env, &contract_id)
+fn setup(env: &Env) -> WaterLoyaltyContractClient {
+    let contract_id = env.register(WaterLoyaltyContract, ());
+    WaterLoyaltyContractClient::new(env, &contract_id)
 }
 
 #[test]
-fn init_then_contribute_tracks_total() {
+fn increment_tracks_per_user() {
     let env = Env::default();
+    env.mock_all_auths();
     let client = setup(&env);
 
-    client.init(&1000);
-    let state = client.get_state();
-    assert_eq!(state.target, 1000);
-    assert_eq!(state.saved, 0);
+    let user1 = Address::generate(&env);
+    let user2 = Address::generate(&env);
 
-    assert_eq!(client.contribute(&250), 250);
-    assert_eq!(client.contribute(&750), 1000);
+    assert_eq!(client.add_stamp(&user1), 1);
+    assert_eq!(client.add_stamp(&user1), 2);
+    assert_eq!(client.get_tally(&user1), 2);
 
-    let state = client.get_state();
-    assert_eq!(state.saved, 1000);
-    assert_eq!(state.target, 1000);
+    assert_eq!(client.get_tally(&user2), 0);
+    assert_eq!(client.add_stamp(&user2), 1);
+    assert_eq!(client.get_tally(&user2), 1);
 }
 
 #[test]
-fn get_state_before_init_is_zero() {
+fn reset_clears_tally() {
     let env = Env::default();
+    env.mock_all_auths();
     let client = setup(&env);
-    let state = client.get_state();
-    assert_eq!(state.saved, 0);
-    assert_eq!(state.target, 0);
+    let user = Address::generate(&env);
+
+    client.add_stamp(&user);
+    client.add_stamp(&user);
+    assert_eq!(client.get_tally(&user), 2);
+
+    client.reset_tally(&user);
+    assert_eq!(client.get_tally(&user), 0);
 }
 
 #[test]
-fn double_init_fails() {
+fn caps_at_ten() {
     let env = Env::default();
+    env.mock_all_auths();
     let client = setup(&env);
-    client.init(&1000);
-    assert_eq!(client.try_init(&500), Err(Ok(Error::AlreadyInitialized)));
-}
+    let user = Address::generate(&env);
 
-#[test]
-fn contribute_before_init_fails() {
-    let env = Env::default();
-    let client = setup(&env);
-    assert_eq!(client.try_contribute(&100), Err(Ok(Error::NotInitialized)));
-}
-
-#[test]
-fn rejects_non_positive_amounts() {
-    let env = Env::default();
-    let client = setup(&env);
-    client.init(&1000);
-    assert_eq!(client.try_contribute(&0), Err(Ok(Error::InvalidAmount)));
-    assert_eq!(client.try_contribute(&-5), Err(Ok(Error::InvalidAmount)));
+    for _ in 0..15 {
+        client.add_stamp(&user);
+    }
+    assert_eq!(client.get_tally(&user), 10);
 }

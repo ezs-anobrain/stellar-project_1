@@ -4,8 +4,8 @@ A monorepo scaffold for the StellarX PH workshop @ PUP QC. Two parts:
 
 - `web/` — Next.js 16 + TypeScript + Tailwind v4 frontend (connect Freighter,
   show balances, send a testnet payment, invoke a Soroban contract).
-- `contracts/savings-goal/` — a Rust Soroban contract (`init` / `contribute` /
-  `get_state`) with unit tests.
+- `contracts/savings-goal/` — a Rust Soroban contract (`add_stamp` / `get_tally` /
+  `reset_tally`) with unit tests.
 
 ## Stack / versions
 

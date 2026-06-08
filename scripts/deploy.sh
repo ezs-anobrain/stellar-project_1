@@ -34,13 +34,8 @@ CONTRACT_ID=$(stellar contract deploy \
   --network "$NETWORK")
 echo "Deployed contract ID: $CONTRACT_ID"
 
-# 4. Initialise the savings goal (target = 1000). Ignore error if already initialised.
-echo "Initialising savings goal (target 1000)..."
-stellar contract invoke \
-  --id "$CONTRACT_ID" \
-  --source-account "$IDENTITY" \
-  --network "$NETWORK" \
-  -- init --target 1000 || echo "(init skipped — contract may already be initialised)"
+# 4. Skip initialisation (WaterLoyalty doesn't need it)
+echo "Contract deployed successfully."
 
 # 5. Write NEXT_PUBLIC_CONTRACT_ID into web/.env.local
 if [ -f "$ENV_FILE" ]; then

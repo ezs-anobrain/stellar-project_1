@@ -26,15 +26,15 @@ export default function FundAccount({
   };
 
   return (
-    <div>
+    <div className="w-full">
       <button
         onClick={fund}
         disabled={loading}
-        className="rounded bg-amber-400 px-3 py-1.5 text-sm font-medium text-amber-950 transition-colors hover:bg-amber-500 disabled:opacity-50"
+        className="w-full rounded-xl bg-stone-800 px-4 py-3 text-xs font-bold text-white shadow-sm transition-all hover:bg-stone-900 disabled:opacity-50 active:scale-95"
       >
-        {loading ? 'Funding…' : 'Fund with Friendbot (testnet)'}
+        {loading ? 'Requesting Funds…' : 'Fund Testnet Wallet'}
       </button>
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
     </div>
   );
 }

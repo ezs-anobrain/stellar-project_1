@@ -24,13 +24,13 @@ export default function ConnectWallet({
         <button
           onClick={copy}
           title="Copy full address"
-          className="rounded bg-gray-100 px-3 py-1 font-mono text-sm text-gray-700 transition-colors hover:bg-gray-200"
+          className="rounded-lg bg-stone-100 px-3 py-1.5 font-mono text-xs text-stone-600 transition-all hover:bg-stone-200 active:scale-95"
         >
           {copied ? 'Copied!' : `${publicKey.slice(0, 6)}…${publicKey.slice(-6)}`}
         </button>
         <button
           onClick={disconnect}
-          className="text-sm text-red-500 hover:underline"
+          className="text-xs font-bold text-stone-400 hover:text-red-500 transition-colors uppercase tracking-wider"
         >
           Disconnect
         </button>
@@ -43,9 +43,9 @@ export default function ConnectWallet({
       <button
         onClick={connect}
         disabled={connecting}
-        className="rounded bg-indigo-600 px-4 py-2 text-white transition-colors hover:bg-indigo-700 disabled:opacity-50"
+        className="rounded-lg bg-[#78866b] px-5 py-2 text-sm font-bold text-white shadow-lg shadow-[#78866b]/20 transition-all hover:bg-[#6a765e] disabled:opacity-50 active:scale-95"
       >
-        {connecting ? 'Connecting…' : 'Connect Freighter'}
+        {connecting ? 'Connecting…' : 'Connect Wallet'}
       </button>
       {error && <p className="mt-2 max-w-xs text-sm text-red-500">{error}</p>}
     </div>
