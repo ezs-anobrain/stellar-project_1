@@ -10,12 +10,10 @@ In the Philippines, Water Refilling Stations (WRS) are a neighborhood staple, bu
 2. **Connect & Pay**: Customers connect their Freighter wallet and select the amount of water needed.
 3. **Instant Refill**: Payments are settled instantly in XLM. The UI provides real-time status updates from building to confirmation.
 4. **Automated Loyalty**: For every successful purchase, a "stamp" is automatically recorded on a Soroban smart contract.
-5. **Free Rewards**: After collecting 10 stamps, users can claim a **Free Refill** directly from the dashboard.
-6. **Payment History**: Users can view their 10 most recent payments and verify them on the Stellar Expert explorer via the **"History"** tab.
+5. **Payment History**: Users can view their 10 most recent payments and verify them on the Stellar Expert explorer via the **"History"** tab.
 
 ## How It Uses Stellar
 - **XLM Payments**: Enables ultra-low-cost micro-payments perfect for the Philippine WRS market.
-- **Soroban Smart Contracts**: Power the loyalty program. Stamps are stored as persistent on-chain state, ensuring they can never be lost or tampered with.
 - **Stellar Horizon API**: Used for real-time balance tracking and fetching payment history directly from the ledger.
 - **Self-Custody**: Users maintain full control of their funds and loyalty progress via their own Stellar keys.
 
