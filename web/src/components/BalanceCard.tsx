@@ -27,8 +27,8 @@ export default function BalanceCard({
   if (loading) {
     return (
       <div className="mt-4 grid animate-pulse grid-cols-2 gap-4">
-        <div className="h-20 rounded bg-gray-200" />
-        <div className="h-20 rounded bg-gray-200" />
+        <div className="h-20 rounded bg-stone-100" />
+        <div className="h-20 rounded bg-stone-100" />
       </div>
     );
   }

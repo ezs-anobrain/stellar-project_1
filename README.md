@@ -6,27 +6,29 @@ Modern on-chain payments and loyalty rewards for Philippine Water Refilling Stat
 In the Philippines, Water Refilling Stations (WRS) are a neighborhood staple, but they almost exclusively rely on cash and physical paper punch-cards for loyalty tracking. These cards are easily lost, damaged, or forgotten, leading to missed rewards for customers. For owners, cash management and manual record-keeping are prone to errors and lack transparency.
 
 ## How It Works
-1. **Connect & Pay**: Customers connect their Freighter wallet and select the number of gallons needed.
-2. **Instant Refill**: The payment is settled instantly on the Stellar network in XLM.
-3. **Smart Loyalty**: The system automatically records a "stamp" on a Soroban smart contract for every purchase.
-4. **Free Rewards**: Once a customer reaches 10 stamps, the UI unlocks a "Free Refill" claim, allowing them to redeem their reward on-chain.
+1. **Interactive Guide**: New users can visit the **"How It Works"** tab for a visual walkthrough of the system.
+2. **Connect & Pay**: Customers connect their Freighter wallet and select the amount of water needed.
+3. **Instant Refill**: Payments are settled instantly in XLM. The UI provides real-time status updates from building to confirmation.
+4. **Automated Loyalty**: For every successful purchase, a "stamp" is automatically recorded on a Soroban smart contract.
+5. **Free Rewards**: After collecting 10 stamps, users can claim a **Free Refill** directly from the dashboard.
+6. **Payment History**: Users can view their 10 most recent payments and verify them on the Stellar Expert explorer via the **"History"** tab.
 
 ## How It Uses Stellar
-- **XLM Payments**: Low-fee, sub-second settlement for micro-transactions (refills typically cost 25-50 pesos).
-- **Soroban Smart Contracts**: Tracks user loyalty "stamps" securely and transparently without needing a centralized database.
-- **Self-Custody**: Users own their loyalty progress; it can't be lost like a paper card.
-- **Testnet Infrastructure**: Uses Friendbot for easy onboarding and Horizon for balance tracking.
+- **XLM Payments**: Enables ultra-low-cost micro-payments perfect for the Philippine WRS market.
+- **Soroban Smart Contracts**: Power the loyalty program. Stamps are stored as persistent on-chain state, ensuring they can never be lost or tampered with.
+- **Stellar Horizon API**: Used for real-time balance tracking and fetching payment history directly from the ledger.
+- **Self-Custody**: Users maintain full control of their funds and loyalty progress via their own Stellar keys.
 
 ## Track
 StellarX Philippines — Main Workshop Track
 
 ## Tech Stack
-- Framework: Next.js 15 (App Router)
-- Styling: Tailwind CSS
-- Stellar SDK: @stellar/stellar-sdk v15.1.0
-- Wallet: @stellar/freighter-api v6.0.0
-- Contracts: Soroban (Rust SDK 22.0)
-- Network: Testnet
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS (Modern "Clean" Aesthetic)
+- **Stellar SDK**: @stellar/stellar-sdk v15.1.0
+- **Wallet**: @stellar/freighter-api v6.0.0
+- **Contracts**: Soroban (Rust SDK 22.0)
+- **Network**: Testnet
 
 ## Setup & Run
 
@@ -57,7 +59,7 @@ npm run dev
 - **RPC URL**: `https://soroban-testnet.stellar.org`
 - **Horizon URL**: `https://horizon-testnet.stellar.org`
 - **Contract ID**: (Generated during deployment)
-- **Station Wallet**: `GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5` (USDC Issuer/Station Wallet)
+- **Station Wallet**: `GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`
 
 ## Team
 - **Gemini CLI** — @gemini-cli (Lead Engineer)
